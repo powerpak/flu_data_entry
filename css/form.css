@@ -1,0 +1,36 @@
+body {
+  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+form label span.little {
+  display: inline-block;
+  min-width: 80px;
+  text-align: right;
+  padding-right: 15px;
+}
+
+#add-strain-tab {
+  margin-left: 20px;
+}
+
+.strain-tab-template {
+  display: none;
+}
+
+.editable {
+  margin-left: 0;
+}
+
+.cross {
+  font-size: 200%;
+  position: relative;
+  top: 2px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.im-done {
+  margin-left: 30px;
+}

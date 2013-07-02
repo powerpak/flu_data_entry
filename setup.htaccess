@@ -1,0 +1,23 @@
+# COPY TO setup.htaccess before using
+
+<FilesMatch ".(php|htm|html|css|js)$">
+AddDefaultCharset UTF-8
+</FilesMatch>
+
+# If an index.php file is intended to be used as a front controller using glue, this
+# .htaccess is a good starting point.
+RewriteEngine On
+
+# Where does the app live in the URL path hierarchy?
+RewriteBase /flu_data_entry
+
+# These directories should never be accessed directly (add more as needed)
+RewriteRule ^(setup\.|config\.|README|private/|includes/|lib/) - [F,L]
+
+# Only the images, css, and js directories can be accessed directly (add more as needed)
+RewriteCond $1 ^(index\.php|css/|js/|img/)
+# No rewriting
+RewriteRule ^(.*)$ - [PT,L]
+
+# Rewrite all other pages to the front controller
+RewriteRule . index.php
