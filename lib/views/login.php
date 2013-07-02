@@ -10,7 +10,7 @@
       <div class="control-group">
         <label class="control-label" for="user">User</label>
         <div class="controls">
-          <select name="user">
+          <select name="user" size="5">
             <option>Ted</option>
             <option>Ruhana</option>
           </select>

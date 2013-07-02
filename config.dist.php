@@ -10,5 +10,6 @@ $BASE_URL = '/flu_data_entry';
 $DATABASE = array(
   'connection' => 'mysql:host=127.0.0.1;dbname=flu_pheno',
   'user' => 'root',
-  'password' => ''
+  'password' => '',
+  'session_model' => 'Session'
 )
