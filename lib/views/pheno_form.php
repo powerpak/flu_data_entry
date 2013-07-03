@@ -64,7 +64,7 @@
       <div class="control-group">
         <label class="control-label" for="mod_1[]">Modifications</label>
         <?php for($i = 1; $i <= 8; $i++): ?>
-        <div class="controls">
+        <div class="controls<?= $i == 1 ? '' : ' hidden' ?>">
           <strong><?= $i ?></strong>
           <select name="seg_<?= $i ?>[]" class="seg-select span2">
             <option></option>
@@ -80,7 +80,7 @@
             <option>NS2</option>
           </select>
           <input type="text" class="span4" name="mod_<?= $i ?>[]"
-            placeholder="<?= $i == 0 ? 'e.g. K144V or A/Norway/3568/2009' : '' ?>"/>
+            placeholder="<?= $i == 1 ? 'e.g. K144V or A/Norway/3568/2009' : '' ?>"/>
         </div>
         <?php endfor; ?>
       </div>
