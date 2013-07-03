@@ -35,7 +35,6 @@ $(->
     $template.data('new-tab-num', newTabNum)
     
     newTabCount = $('.strain-tab:not(.strain-tab-template)').length
-    $('.strain-tab .delete-strain-tab').toggleClass('disabled', newTabCount <= 1)
     $newContent.find('.tm-input').tagsManager({tagCloseIcon: '×'})
     $newContent.find('.editable').pasteImageReader (results) ->
       {event, dataURL} = results
@@ -51,7 +50,6 @@ $(->
     return if $allTabs.length <= 1
     $tab.remove()
     $tabContent.remove()
-    $('.strain-tab .delete-strain-tab').toggleClass('disabled', $allTabs.length == 2)
     $('#strain-tabs li:not(.strain-tab-template) a').eq(tabIndex - 1).tab('show')
   
   submitPhenotypes = (e) ->
