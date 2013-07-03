@@ -16,6 +16,11 @@
           </select>
         </div>
       </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn">Sign in</button>
+        </div>
+      </div>
     </form>
 
   </div>
