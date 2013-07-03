@@ -9,9 +9,6 @@ class Source extends Model {
   public static function save_from_form($post) {
     Model::start_transaction();
     $id = isset($post['id']) && $post['id'] !== '' ? $post['id'] : NULL;
-    if (!is_array($post['strain_name'])) {
-      throw new ApplicationException('Invalid submission data for strain_name field');
-    }
     if ($id === NULL) {
       $sources = Model::factory('Source')->where('first_author', $post['first_author']);
       if ($post['pub_year']) { $sources->where('pub_year', $post['pub_year']); }
@@ -27,7 +24,7 @@ class Source extends Model {
     foreach($source->phenotypes()->find_many() as $phenotype) {
       $phenotype->delete();
     }
-    foreach($post['strain_name'] as $i=>$strain_name) {
+    if (!is_array($post['strain_name'])) foreach($post['strain_name'] as $i=>$strain_name) {
       $phenotype = new Phenotype;
       $phenotype->source_id = $source->id;
       $phenotype->strain_name = $strain_name;
