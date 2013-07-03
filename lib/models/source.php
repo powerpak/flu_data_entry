@@ -52,7 +52,7 @@ class Source extends Model {
         }
       }
       $phenotype->clinical_qual = $post['hidden-clinical_qual'][$i];
-      for ($j = 1; $j <= 6; $j++) {
+      for ($j = 1; $j <= 8; $j++) {
         if (is_array($post["seg_$j"]) && $post["seg_$j"][$i]) {
           $phenotype->{"mod_$j"} = $post["seg_$j"][$i] . ':' . $post["mod_$j"][$i];
         } else {
