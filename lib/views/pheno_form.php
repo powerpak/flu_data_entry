@@ -52,7 +52,8 @@
           </label>
           <label>
             subtype
-            <input type="text" name="animal_subtype[]" class="span1" placeholder="balb/c"/>
+            <input type="text" name="animal_subtype[]" class="span1" data-provide="typeahead" 
+              placeholder="balb/c" data-source="[&quot;balb/c&quot;]" autocomplete="off"/>
           </label>
         </div>
         <div class="controls">
