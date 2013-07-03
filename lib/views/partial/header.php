@@ -21,7 +21,9 @@
           <ul class="nav">
             <?= nav_link($this->path, '/', 'List phenotypes') ?>
             <?= nav_link($this->path, '/edit', 'Enter data') ?>
+            <?php if ($_SESSION['user']): ?>
             <?= nav_link($this->path, '/logout', "Logout {$this->user}") ?>
+            <?php endif; ?>
           </ul>
         </div> <!--/.nav-collapse -->
       </div>
