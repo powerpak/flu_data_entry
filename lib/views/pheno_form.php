@@ -182,6 +182,7 @@
           <input type="text" name="ld50[]" class="span1" placeholder="1.0"/>
           ×10^
           <input type="text" name="ld50_exp[]" class="span1" placeholder="5"/>
+          PFU
           <label for="eid50[]">
             <span class="little">EID50</span>
           </label>
@@ -195,6 +196,7 @@
           <input type="text" name="eid50[]" class="span1" placeholder="1.0"/>
           ×10^
           <input type="text" name="eid50_exp[]" class="span1" placeholder="5"/>
+          PFU
         </div>
       </div>
       <div class="control-group">
