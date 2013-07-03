@@ -24,7 +24,7 @@ class Source extends Model {
     foreach($source->phenotypes()->find_many() as $phenotype) {
       $phenotype->delete();
     }
-    if (!is_array($post['strain_name'])) foreach($post['strain_name'] as $i=>$strain_name) {
+    if (is_array($post['strain_name'])) foreach($post['strain_name'] as $i=>$strain_name) {
       $phenotype = new Phenotype;
       $phenotype->source_id = $source->id;
       $phenotype->strain_name = $strain_name;
