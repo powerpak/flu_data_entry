@@ -102,7 +102,7 @@
               return $tabContent.find('.tm-input').tagsManager('pushTag', tag);
             });
           } else if (k === 'evidence' && v) {
-            console.log($tabContent.find('.editable'));
+            console.log(v);
             return $tabContent.find('.editable').html(v);
           } else {
             return $tabContent.find('[name="' + k + '[]"]').val(v).change();

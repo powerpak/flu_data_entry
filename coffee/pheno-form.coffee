@@ -83,8 +83,7 @@ $(->
             $tabContent.find('.tm-input').tagsManager('pushTag',tag)
           )
         else if k == 'evidence' && v
-          console.log($tabContent.find('.editable'))
-          
+          console.log(v)
           $tabContent.find('.editable').html(v)
         else
           $tabContent.find('[name="'+k+'[]"]').val(v).change()
