@@ -65,6 +65,8 @@ class edit extends Controller {
     if ($_POST['next_source']) {
       $next_source = Model::factory('Source')->where_null('reviewed')->find_one();
       redirect("/edit/{$next_source->id}");
+    } elseif ($_POST['done']) {
+      redirect("/");
     } else {
       redirect("/edit/{$source->id}");
     }
