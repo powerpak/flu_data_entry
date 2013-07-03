@@ -9,8 +9,8 @@ form label span.little {
   padding-right: 15px;
 }
 
-#add-strain-tab {
-  margin-left: 20px;
+#strain-tabs .add-strain-tab {
+  margin-bottom: 10px;
 }
 
 .strain-tab-template {

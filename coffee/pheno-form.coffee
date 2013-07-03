@@ -34,6 +34,7 @@ $(->
     
     $template.data('new-tab-num', newTabNum)
     
+    $('#strain-tabs .add-strain-tab').addClass('hidden')
     newTabCount = $('.strain-tab:not(.strain-tab-template)').length
     $newContent.find('.tm-input').tagsManager({tagCloseIcon: '×'})
     $newContent.find('.editable').pasteImageReader (results) ->
@@ -47,10 +48,11 @@ $(->
     $tab = $("#strain-tabs a[href='##{$tabContent.attr('id')}']").closest('li')
     $allTabs = $('#strain-tabs li:not(.strain-tab-template)')
     tabIndex = $allTabs.index($tab)
-    return if $allTabs.length <= 1
     $tab.remove()
     $tabContent.remove()
-    $('#strain-tabs li:not(.strain-tab-template) a').eq(tabIndex - 1).tab('show')
+    if $allTabs.length > 1
+      $('#strain-tabs li:not(.strain-tab-template) a').eq(tabIndex - 1).tab('show')
+    $('#strain-tabs .add-strain-tab').toggleClass('hidden', $allTabs.length != 1)
   
   submitPhenotypes = (e) ->
     $('.strain-tab:not(.strain-tab-template) .editable').each ->

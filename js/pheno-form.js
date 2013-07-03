@@ -36,6 +36,7 @@
       $newTab.removeClass('strain-tab-template');
       $newTab.children('a').attr('href', '#' + newId).tab('show');
       $template.data('new-tab-num', newTabNum);
+      $('#strain-tabs .add-strain-tab').addClass('hidden');
       newTabCount = $('.strain-tab:not(.strain-tab-template)').length;
       $newContent.find('.tm-input').tagsManager({
         tagCloseIcon: '×'
@@ -56,12 +57,12 @@
       $tab = $("#strain-tabs a[href='#" + ($tabContent.attr('id')) + "']").closest('li');
       $allTabs = $('#strain-tabs li:not(.strain-tab-template)');
       tabIndex = $allTabs.index($tab);
-      if ($allTabs.length <= 1) {
-        return;
-      }
       $tab.remove();
       $tabContent.remove();
-      return $('#strain-tabs li:not(.strain-tab-template) a').eq(tabIndex - 1).tab('show');
+      if ($allTabs.length > 1) {
+        $('#strain-tabs li:not(.strain-tab-template) a').eq(tabIndex - 1).tab('show');
+      }
+      return $('#strain-tabs .add-strain-tab').toggleClass('hidden', $allTabs.length !== 1);
     };
     submitPhenotypes = function(e) {
       return $('.strain-tab:not(.strain-tab-template) .editable').each(function() {

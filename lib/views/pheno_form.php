@@ -25,6 +25,7 @@
             <span class="strain-id">Unknown Strain</span> <strong class="cross">&rarr;</strong> <strong class="animal">mouse</strong>
           </a>
         </li>
+        <button class="btn add-strain-tab">Add another experiment</button>
       </ul>
       
       <input type="hidden" name="id"/>
