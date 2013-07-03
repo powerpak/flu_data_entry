@@ -63,9 +63,10 @@
       </div>
       <div class="control-group">
         <label class="control-label" for="mod_1[]">Modifications</label>
+        <?php for($i = 1; $i <= 8; $i++): ?>
         <div class="controls">
-          <strong>1</strong>
-          <select name="seg_1[]" class="seg-select span2">
+          <strong><?= $i ?></strong>
+          <select name="seg_<?= $i ?>[]" class="seg-select span2">
             <option></option>
             <option>PB1</option>
             <option>PB2</option>
@@ -78,113 +79,13 @@
             <option>NS1</option>
             <option>NS2</option>
           </select>
-          <input type="text" class="span4" name="mod_1[]" placeholder="e.g. K144V or A/Norway/3568/2009"/>
+          <input type="text" class="span4" name="mod_<?= $i ?>[]"
+            placeholder="<?= $i == 0 ? 'e.g. K144V or A/Norway/3568/2009' : '' ?>"/>
         </div>
-        <div class="controls hidden">
-          <strong>2</strong>
-          <select name="seg_2[]" class="seg-select span2">
-            <option></option>
-            <option>PB1</option>
-            <option>PB2</option>
-            <option>PA</option>
-            <option>HA</option>
-            <option>NP</option>
-            <option>NA</option>
-            <option>M1</option>
-            <option>M2</option>
-            <option>NS1</option>
-            <option>NS2</option>
-          </select>
-          <input type="text" class="span4" name="mod_2[]"/>
-        </div>
-        <div class="controls hidden">
-          <strong>3</strong>
-          <select name="seg_3[]" class="seg-select span2">
-            <option></option>
-            <option>PB1</option>
-            <option>PB2</option>
-            <option>PA</option>
-            <option>HA</option>
-            <option>NP</option>
-            <option>NA</option>
-            <option>M1</option>
-            <option>M2</option>
-            <option>NS1</option>
-            <option>NS2</option>
-          </select>
-          <input type="text" class="span4" name="mod_3[]"/>
-        </div>
-        <div class="controls hidden">
-          <strong>4</strong>
-          <select name="seg_4[]" class="seg-select span2">
-            <option></option>
-            <option>PB1</option>
-            <option>PB2</option>
-            <option>PA</option>
-            <option>HA</option>
-            <option>NP</option>
-            <option>NA</option>
-            <option>M1</option>
-            <option>M2</option>
-            <option>NS1</option>
-            <option>NS2</option>
-          </select>
-          <input type="text" class="span4" name="mod_4[]"/>
-        </div>
-        <div class="controls hidden">
-          <strong>5</strong>
-          <select name="seg_5[]" class="seg-select span2">
-            <option></option>
-            <option>PB1</option>
-            <option>PB2</option>
-            <option>PA</option>
-            <option>HA</option>
-            <option>NP</option>
-            <option>NA</option>
-            <option>M1</option>
-            <option>M2</option>
-            <option>NS1</option>
-            <option>NS2</option>
-          </select>
-          <input type="text" class="span4" name="mod_5[]"/>
-        </div>
-        <div class="controls hidden">
-          <strong>6</strong>
-          <select name="seg_6[]" class="seg-select span2">
-            <option></option>
-            <option>PB1</option>
-            <option>PB2</option>
-            <option>PA</option>
-            <option>HA</option>
-            <option>NP</option>
-            <option>NA</option>
-            <option>M1</option>
-            <option>M2</option>
-            <option>NS1</option>
-            <option>NS2</option>
-          </select>
-          <input type="text" class="span4" name="mod_6[]"/>
-        </div>
-        <div class="controls hidden">
-          <strong>6</strong>
-          <select name="seg_7[]" class="seg-select span2">
-            <option></option>
-            <option>PB1</option>
-            <option>PB2</option>
-            <option>PA</option>
-            <option>HA</option>
-            <option>NP</option>
-            <option>NA</option>
-            <option>M1</option>
-            <option>M2</option>
-            <option>NS1</option>
-            <option>NS2</option>
-          </select>
-          <input type="text" class="span4" name="mod_7[]"/>
-        </div>
+        <?php endfor; ?>
       </div>
       <div class="controls hidden">
-        <strong>6</strong>
+        <strong>8</strong>
         <select name="seg_8[]" class="seg-select span2">
           <option></option>
           <option>PB1</option>
