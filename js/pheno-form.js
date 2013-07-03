@@ -103,7 +103,7 @@
             });
           } else if (k === 'evidence' && v) {
             console.log(v);
-            return $tabContent.find('.editable').html(v.replace(/\\"/g, '"'));
+            return $tabContent.find('.editable').html(v);
           } else {
             return $tabContent.find('[name="' + k + '[]"]').val(v).change();
           }

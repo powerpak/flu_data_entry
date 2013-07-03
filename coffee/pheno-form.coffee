@@ -84,7 +84,7 @@ $(->
           )
         else if k == 'evidence' && v
           console.log(v)
-          $tabContent.find('.editable').html(v.replace(/\\"/g, '"'))
+          $tabContent.find('.editable').html(v)
         else
           $tabContent.find('[name="'+k+'[]"]').val(v).change()
       )
