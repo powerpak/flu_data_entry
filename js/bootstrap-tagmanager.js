@@ -83,7 +83,7 @@
     }
 
     var obj = this;
-    var objName = obj.attr('name').replace(/[^\w]/g, '_');
+    var objName = obj.attr('name').replace(/[^\w]/g, '_') + Math.floor(Math.random()*1000001).toString();
     var delimiters = tagManagerOptions.delimeters || tagManagerOptions.delimiters; // 'delimeter' is deprecated
     // delimiter values to be handled as key codes
     var keyNums = [9,13,17,18,19,37,38,39,40];
@@ -426,7 +426,7 @@
       obj.data("tlid", tlid); //list of ID of the string tags
 
       if (tagManagerOptions.hiddenTagListId == null) { /* if hidden input not given default activity */
-        var hiddenTag = $("input[name='" + tagManagerOptions.hiddenTagListName + "']");
+        var hiddenTag = obj.siblings("input[name='" + tagManagerOptions.hiddenTagListName + "']");
         if (hiddenTag.length > 0) {
           hiddenTag.remove();
         }
