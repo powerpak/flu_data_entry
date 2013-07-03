@@ -16,7 +16,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="brand" href="#">Flu phenotype entry</a>
+        <a class="brand" href="<?= href('/') ?>">Flu phenotype entry</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
             <?= nav_link($this->path, '/', 'List phenotypes') ?>
