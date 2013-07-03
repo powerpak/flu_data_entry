@@ -76,6 +76,9 @@
       if (source.reviewed === '2') {
         $('form input[name=done]').attr('checked', true);
       }
+      if (!source.phenotypes.length) {
+        $('#strain-tab-content .delete-strain-tab').click();
+      }
       return _.each(source.phenotypes, function(pheno, i) {
         var $tabContent;
         if (i > 0) {

@@ -64,6 +64,7 @@ $(->
     )
     if source.reviewed == '2'
       $('form input[name=done]').attr('checked', true)
+    $('#strain-tab-content .delete-strain-tab').click() if !source.phenotypes.length
     _.each(source.phenotypes, (pheno, i) ->
       addStrainTab() if i > 0
       $tabContent = $('#strain-tab-content .strain-tab').last()
