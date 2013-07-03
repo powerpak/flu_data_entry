@@ -12,4 +12,4 @@ $DATABASE = array(
   'user' => 'root',
   'password' => '',
   'session_model' => 'Session'
-)
+);
