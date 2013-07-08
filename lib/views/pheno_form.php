@@ -59,6 +59,7 @@
         <div class="controls">
           <button class="btn btn-danger delete-strain-tab">Delete this experiment</button>
           <button class="btn add-strain-tab">Add another experiment</button>
+          <button class="btn dupe-strain-tab">Duplicate this experiment</button>
         </div>
       </div>
       <div class="control-group">

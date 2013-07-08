@@ -16,8 +16,9 @@ $(->
   
   addStrainTab = (e) ->
     e.preventDefault() if e
-    $template = $('.strain-tab.strain-tab-template')
-    $tabTemplate = $('#strain-tabs .strain-tab-template')
+    dupe = e.data && e.data.dupe
+    $template = if dupe then $('.strain-tab.active') else $('.strain-tab.strain-tab-template')
+    $tabTemplate = if dupe then $('#strain-tabs li.active') else $('#strain-tabs .strain-tab-template')
     newTabNum = 1 + parseInt($template.data('new-tab-num') || 0, 10)
     newId = 'strain-tab-' + newTabNum
     
@@ -92,6 +93,7 @@ $(->
   
   $('html').on 'click', '.add-strain-tab', addStrainTab
   $('form').on 'click', '.delete-strain-tab', deleteStrainTab
+  $('html').on 'click', '.dupe-strain-tab', {dupe: true}, addStrainTab
   
   $('form').on 'keyup change', '[name="strain_name[]"]', (e) ->
     tab_id = $(this).closest('.strain-tab').attr('id')

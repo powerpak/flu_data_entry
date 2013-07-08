@@ -19,12 +19,13 @@
       }
     };
     addStrainTab = function(e) {
-      var $newContent, $newTab, $tabTemplate, $template, newId, newTabCount, newTabNum;
+      var $newContent, $newTab, $tabTemplate, $template, dupe, newId, newTabCount, newTabNum;
       if (e) {
         e.preventDefault();
       }
-      $template = $('.strain-tab.strain-tab-template');
-      $tabTemplate = $('#strain-tabs .strain-tab-template');
+      dupe = e.data && e.data.dupe;
+      $template = dupe ? $('.strain-tab.active') : $('.strain-tab.strain-tab-template');
+      $tabTemplate = dupe ? $('#strain-tabs li.active') : $('#strain-tabs .strain-tab-template');
       newTabNum = 1 + parseInt($template.data('new-tab-num') || 0, 10);
       newId = 'strain-tab-' + newTabNum;
       $('.strain-tab.active').removeClass('active').removeClass('in');
@@ -112,6 +113,9 @@
     };
     $('html').on('click', '.add-strain-tab', addStrainTab);
     $('form').on('click', '.delete-strain-tab', deleteStrainTab);
+    $('html').on('click', '.dupe-strain-tab', {
+      dupe: true
+    }, addStrainTab);
     $('form').on('keyup change', '[name="strain_name[]"]', function(e) {
       var strain_id, tab_id;
       tab_id = $(this).closest('.strain-tab').attr('id');
