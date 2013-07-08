@@ -49,7 +49,7 @@ $(->
     if dupe
       $newContent.find('select').each ->
         $(this).val($contentTemplate.find('[name="'+$(this).attr('name')+'"]').val()).change()
-      _.each $contentTemplate.find('[name="clinical_qual[]"]').split(/,/g), (tag) ->
+      _.each $contentTemplate.find('[name="clinical_qual[]"]').val().split(/,/g), (tag) ->
         $newContent.find('.tm-input').tagsManager('pushTag', tag)
   
   deleteStrainTab = (e) ->
