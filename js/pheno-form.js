@@ -170,8 +170,12 @@
       tabId = $(this).closest('.strain-tab').attr('id');
       console.log(allVals);
       $('#strain-tabs a[href=#' + tabId + '] .mods').text(allVals.length ? '~' + allVals.join(',') : '');
-      $(this).closest('.controls').siblings('.controls').addBack().not($toHide).removeClass('hidden');
-      return $toHide.addClass('hidden');
+      if ($toHide.length || allVals.length) {
+        $allSelects.closest('.controls').not($toHide).removeClass('hidden');
+        return $toHide.addClass('hidden');
+      } else {
+        return $allSelects.closest('.controls').addClass('hidden').eq(0).removeClass('hidden');
+      }
     });
     $('form').on('submit', submitPhenotypes);
     if (!$('.strain-tab:not(.strain-tab-template)').length) {

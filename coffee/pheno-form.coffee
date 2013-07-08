@@ -134,8 +134,11 @@ $(->
     tabId = $(this).closest('.strain-tab').attr('id')
     console.log(allVals)
     $('#strain-tabs a[href=#'+tabId+'] .mods').text(if allVals.length then '~' + allVals.join(',') else '')
-    $(this).closest('.controls').siblings('.controls').addBack().not($toHide).removeClass('hidden')
-    $toHide.addClass('hidden')
+    if $toHide.length || allVals.length
+      $allSelects.closest('.controls').not($toHide).removeClass('hidden')
+      $toHide.addClass('hidden')
+    else # show only the first row
+      $allSelects.closest('.controls').addClass('hidden').eq(0).removeClass('hidden')
   
   $('form').on('submit', submitPhenotypes)
   
