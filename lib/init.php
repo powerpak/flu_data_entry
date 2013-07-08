@@ -4,6 +4,7 @@ require_once('idiorm.php');
 require_once('dakota.php');
 require_once('helpers.php');
 require_once('lib/drivers/session_database.php');
+require_once('lib/views/partial/typeahead_data.php');
 
 // display errors and warnings but not notices
 ini_set("display_errors", TRUE);

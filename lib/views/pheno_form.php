@@ -1,4 +1,5 @@
 <?php include 'partial/header.php' ?>
+<?php include 'partial/typeahead_data.php' ?>
 
   <div class="container">
 
@@ -53,7 +54,7 @@
           <label>
             subtype
             <input type="text" name="animal_subtype[]" class="span1" data-provide="typeahead" 
-              placeholder="balb/c" data-source="[&quot;balb/c&quot;]" autocomplete="off"/>
+              placeholder="balb/c" data-source="<?= html_esc(json_encode($ANIMAL_SUBTYPES)) ?>" autocomplete="off"/>
           </label>
         </div>
         <div class="controls">
@@ -161,7 +162,7 @@
       <div class="control-group">
         <label class="control-label" for="clinical_qual[]">Clinical signs</label>
         <div class="controls form-inline">
-          <input type="text" name="clinical_qual[]" placeholder="e.g., playful, happy" class="tm-input"/>
+          <input type="text" name="clinical_qual[]" placeholder="e.g., playful, happy" class="tm-input" autocomplete="off" data-provide="typeahead" data-source="<?= html_esc(json_encode($CLINICAL_TAGS)) ?>"/>
         </div>
       </div>
       <div class="control-group">
