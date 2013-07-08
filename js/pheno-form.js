@@ -19,18 +19,19 @@
       }
     };
     addStrainTab = function(e) {
-      var $newContent, $newTab, $tabTemplate, $template, dupe, newId, newTabCount, newTabNum;
+      var $contentTemplate, $newContent, $newTab, $tabTemplate, $template, dupe, newId, newTabCount, newTabNum;
       if (e) {
         e.preventDefault();
       }
       dupe = (e != null) && (e.data != null) && e.data.dupe;
-      $template = dupe ? $('.strain-tab.active') : $('.strain-tab.strain-tab-template');
+      $template = $('.strain-tab.strain-tab-template');
+      $contentTemplate = dupe ? $('.strain-tab.active') : $template;
       $tabTemplate = dupe ? $('#strain-tabs li.active') : $('#strain-tabs .strain-tab-template');
       newTabNum = 1 + parseInt($template.data('new-tab-num') || 0, 10);
       newId = 'strain-tab-' + newTabNum;
       $('.strain-tab.active').removeClass('active').removeClass('in');
       $('#strain-tabs li.active').removeClass('active');
-      $newContent = $template.clone().appendTo('#strain-tab-content');
+      $newContent = $contentTemplate.clone().appendTo('#strain-tab-content');
       $newContent.removeClass('strain-tab-template').addClass('active in');
       $newContent.attr('id', newId);
       $newTab = $tabTemplate.clone().insertBefore('#strain-tabs .strain-tab-template');
@@ -38,7 +39,7 @@
       $newTab.children('a').attr('href', '#' + newId).tab('show');
       $template.data('new-tab-num', newTabNum);
       $newContent.find('.seg-select').each(function() {
-        return $(this).val($template.find('[name="' + $(this).attr('name') + '"]').val()).change();
+        return $(this).val($contentTemplate.find('[name="' + $(this).attr('name') + '"]').val()).change();
       });
       $('#strain-tabs').sortable('refresh');
       $('#strain-tabs .add-strain-tab').addClass('hidden');

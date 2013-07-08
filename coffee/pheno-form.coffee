@@ -17,7 +17,8 @@ $(->
   addStrainTab = (e) ->
     e.preventDefault() if e
     dupe = e? && e.data? && e.data.dupe
-    $template = if dupe then $('.strain-tab.active') else $('.strain-tab.strain-tab-template')
+    $template = $('.strain-tab.strain-tab-template')
+    $contentTemplate = if dupe then $('.strain-tab.active') else $template
     $tabTemplate = if dupe then $('#strain-tabs li.active') else $('#strain-tabs .strain-tab-template')
     newTabNum = 1 + parseInt($template.data('new-tab-num') || 0, 10)
     newId = 'strain-tab-' + newTabNum
@@ -25,7 +26,7 @@ $(->
     $('.strain-tab.active').removeClass('active').removeClass('in')
     $('#strain-tabs li.active').removeClass('active')
     
-    $newContent = $template.clone().appendTo('#strain-tab-content')
+    $newContent = $contentTemplate.clone().appendTo('#strain-tab-content')
     $newContent.removeClass('strain-tab-template').addClass('active in')
     $newContent.attr('id', newId)
     
@@ -37,7 +38,7 @@ $(->
     
     # For some reason these are not copied with the .clone()
     $newContent.find('.seg-select').each ->
-      $(this).val($template.find('[name="'+$(this).attr('name')+'"]').val()).change()
+      $(this).val($contentTemplate.find('[name="'+$(this).attr('name')+'"]').val()).change()
     $('#strain-tabs').sortable('refresh');
     $('#strain-tabs .add-strain-tab').addClass('hidden')
     newTabCount = $('.strain-tab:not(.strain-tab-template)').length
