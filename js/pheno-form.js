@@ -158,11 +158,12 @@
     });
     $('form').on('change select', '.seg-select', function(e) {
       var $allSelects, $toHide, allVals, tabId, val;
+      console.log(this);
       val = $(this).val();
       $allSelects = $(this).closest('.control-group').find('.seg-select');
       $toHide = $allSelects.filter(function() {
         return $(this).val() !== '';
-      }).last().closest('.controls').nextAll('.controls');
+      }).last().closest('.controls').nextAll('.controls').slice(1);
       allVals = _.uniq(_.compact(_.map($allSelects, function(el) {
         return $(el).val();
       })));

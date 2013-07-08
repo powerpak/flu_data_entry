@@ -126,9 +126,10 @@ $(->
     $('#strain-tabs a[href=#'+tabId+'] .animal').text(animal)
   
   $('form').on 'change select', '.seg-select', (e) ->
+    console.log this
     val = $(this).val()
     $allSelects = $(this).closest('.control-group').find('.seg-select')
-    $toHide = $allSelects.filter(-> $(this).val() != '').last().closest('.controls').nextAll('.controls')
+    $toHide = $allSelects.filter(-> $(this).val() != '').last().closest('.controls').nextAll('.controls').slice(1)
     allVals = _.uniq _.compact _.map $allSelects, (el) -> $(el).val()
     tabId = $(this).closest('.strain-tab').attr('id')
     console.log(allVals)

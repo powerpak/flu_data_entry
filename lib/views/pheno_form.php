@@ -85,23 +85,6 @@
         </div>
         <?php endfor; ?>
       </div>
-      <div class="controls hidden">
-        <strong>8</strong>
-        <select name="seg_8[]" class="seg-select span2">
-          <option></option>
-          <option>PB1</option>
-          <option>PB2</option>
-          <option>PA</option>
-          <option>HA</option>
-          <option>NP</option>
-          <option>NA</option>
-          <option>M1</option>
-          <option>M2</option>
-          <option>NS1</option>
-          <option>NS2</option>
-        </select>
-        <input type="text" class="span4" name="mod_8[]"/>
-      </div>
       <div class="control-group">
         <label class="control-label" for="ld50[]">Dosages</label>
         <div class="controls form-inline">
