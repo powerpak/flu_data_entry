@@ -33,7 +33,7 @@
       $newContent = $template.clone().appendTo('#strain-tab-content');
       $newContent.removeClass('strain-tab-template').addClass('active in');
       $newContent.attr('id', newId);
-      $newTab = $tabTemplate.clone().insertBefore($tabTemplate);
+      $newTab = $tabTemplate.clone().insertBefore('#strain-tabs .strain-tab-template');
       $newTab.removeClass('strain-tab-template');
       $newTab.children('a').attr('href', '#' + newId).tab('show');
       $template.data('new-tab-num', newTabNum);
