@@ -50,6 +50,7 @@ $(->
       $newContent.find('select').each ->
         $(this).val($contentTemplate.find('[name="'+$(this).attr('name')+'"]').val()).change()
       _.each $contentTemplate.find('[name="clinical_qual[]"]').val().split(/,/g), (tag) ->
+        console.log(tag)
         $newContent.find('.tm-input').tagsManager('pushTag', tag)
   
   deleteStrainTab = (e) ->
@@ -99,11 +100,9 @@ $(->
           $tabContent.find('[name="'+m[0]+'_exp[]"]').val(parseFloat(v[1])).change()
           v = v[0]
         if k == 'clinical_qual' && v
-          _.each(v.split(/,/g), (tag) ->
-            $tabContent.find('.tm-input').tagsManager('pushTag',tag)
-          )
+          _.each v.split(/,/g), (tag) ->
+            $tabContent.find('.tm-input').tagsManager('pushTag', tag)
         else if k == 'evidence' && v
-          console.log(v)
           $tabContent.find('.editable').html(v)
         else
           $tabContent.find('[name="'+k+'[]"]').val(v).change()

@@ -55,6 +55,7 @@
           return $(this).val($contentTemplate.find('[name="' + $(this).attr('name') + '"]').val()).change();
         });
         return _.each($contentTemplate.find('[name="clinical_qual[]"]').val().split(/,/g), function(tag) {
+          console.log(tag);
           return $newContent.find('.tm-input').tagsManager('pushTag', tag);
         });
       }
@@ -128,7 +129,6 @@
               return $tabContent.find('.tm-input').tagsManager('pushTag', tag);
             });
           } else if (k === 'evidence' && v) {
-            console.log(v);
             return $tabContent.find('.editable').html(v);
           } else {
             return $tabContent.find('[name="' + k + '[]"]').val(v).change();
