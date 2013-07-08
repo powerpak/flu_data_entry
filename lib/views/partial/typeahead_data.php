@@ -12,5 +12,6 @@ $CLINICAL_TAGS = array(
   'severe bronchitis','minimal bronchitis','nonpathogenic','bronchiolitis','severe bronchiolitis',
   'minimal bronchiolitis','necrosis of respiratory epithelium','severe necrosis of respiratory epithelium',
   'severe inflammation','minimal inflammation','fever','mild fever','severe fever','minimal fever','moderate fever',
-  'moderate weight loss'
+  'moderate weight loss','no respiratory symptoms','minimal respiratory symptoms','moderate respiratory symptoms',
+  'severe respiratory symptoms','sneezing','nasal discharge','no sneezing','no nasal discharge'
 );
