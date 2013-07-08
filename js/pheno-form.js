@@ -54,8 +54,8 @@
         $newContent.find('select').each(function() {
           return $(this).val($contentTemplate.find('[name="' + $(this).attr('name') + '"]').val()).change();
         });
-        return _.each($contentTemplate.find('[name="clinical_qual[]"]').val().split(/,/g), function(tag) {
-          console.log(tag);
+        $newContent.find('.tm-tag').remove();
+        return _.each($contentTemplate.find('[name="hidden-clinical_qual[]"]').val().split(/,/g), function(tag) {
           return $newContent.find('.tm-input').tagsManager('pushTag', tag);
         });
       }
