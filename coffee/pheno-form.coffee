@@ -36,8 +36,8 @@ $(->
     
     $template.data('new-tab-num', newTabNum)
     
-    # For some reason these are not copied with the .clone()
-    $newContent.find('.seg-select').each ->
+    # For some reason <select> values are not copied with use of .clone()
+    $newContent.find('select').each ->
       $(this).val($contentTemplate.find('[name="'+$(this).attr('name')+'"]').val()).change()
     $('#strain-tabs').sortable('refresh');
     $('#strain-tabs .add-strain-tab').addClass('hidden')

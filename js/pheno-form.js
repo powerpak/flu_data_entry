@@ -38,7 +38,7 @@
       $newTab.removeClass('strain-tab-template');
       $newTab.children('a').attr('href', '#' + newId).tab('show');
       $template.data('new-tab-num', newTabNum);
-      $newContent.find('.seg-select').each(function() {
+      $newContent.find('select').each(function() {
         return $(this).val($contentTemplate.find('[name="' + $(this).attr('name') + '"]').val()).change();
       });
       $('#strain-tabs').sortable('refresh');
