@@ -38,21 +38,26 @@
       $newTab.removeClass('strain-tab-template');
       $newTab.children('a').attr('href', '#' + newId).tab('show');
       $template.data('new-tab-num', newTabNum);
-      $newContent.find('select').each(function() {
-        return $(this).val($contentTemplate.find('[name="' + $(this).attr('name') + '"]').val()).change();
-      });
       $('#strain-tabs').sortable('refresh');
       $('#strain-tabs .add-strain-tab').addClass('hidden');
       newTabCount = $('.strain-tab:not(.strain-tab-template)').length;
       $newContent.find('.tm-input').tagsManager({
         tagCloseIcon: '×'
       });
-      return $newContent.find('.editable').pasteImageReader(function(results) {
+      $newContent.find('.editable').pasteImageReader(function(results) {
         var dataURL, event;
         event = results.event, dataURL = results.dataURL;
         $('<p/>').append($('<img/>').attr('src', dataURL)).appendTo(this);
         return setEndOfContentEditable(this);
       });
+      if (dupe) {
+        $newContent.find('select').each(function() {
+          return $(this).val($contentTemplate.find('[name="' + $(this).attr('name') + '"]').val()).change();
+        });
+        return _.each($contentTemplate.find('[name="clinical_qual[]"]').split(/,/g), function(tag) {
+          return $newContent.find('.tm-input').tagsManager('pushTag', tag);
+        });
+      }
     };
     deleteStrainTab = function(e) {
       var $allTabs, $tab, $tabContent, tabIndex;

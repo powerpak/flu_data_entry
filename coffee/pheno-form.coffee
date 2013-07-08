@@ -36,9 +36,6 @@ $(->
     
     $template.data('new-tab-num', newTabNum)
     
-    # For some reason <select> values are not copied with use of .clone()
-    $newContent.find('select').each ->
-      $(this).val($contentTemplate.find('[name="'+$(this).attr('name')+'"]').val()).change()
     $('#strain-tabs').sortable('refresh');
     $('#strain-tabs .add-strain-tab').addClass('hidden')
     newTabCount = $('.strain-tab:not(.strain-tab-template)').length
@@ -47,6 +44,13 @@ $(->
       {event, dataURL} = results
       $('<p/>').append($('<img/>').attr('src', dataURL)).appendTo(this)
       setEndOfContentEditable(this)
+    
+    # For some reason <select> values are not copied with use of .clone()
+    if dupe
+      $newContent.find('select').each ->
+        $(this).val($contentTemplate.find('[name="'+$(this).attr('name')+'"]').val()).change()
+      _.each $contentTemplate.find('[name="clinical_qual[]"]').split(/,/g), (tag) ->
+        $newContent.find('.tm-input').tagsManager('pushTag', tag)
   
   deleteStrainTab = (e) ->
     e.preventDefault() if e
@@ -76,17 +80,16 @@ $(->
       $(this).next('input').val($(this).html())
       
   loadPhenotypes = (source) ->
-    _.each(source, (v, k) ->
+    _.each source, (v, k) ->
       $('form input[name='+k+']').val(v).attr('readonly', true)
-    )
     if source.reviewed == '2'
       $('form input[name=done]').attr('checked', true)
     $('#strain-tab-content .delete-strain-tab').click() if !source.phenotypes.length
-    _.each(source.phenotypes, (pheno, i) ->
+    _.each source.phenotypes, (pheno, i) ->
       addStrainTab() if i > 0
       $tabContent = $('#strain-tab-content .strain-tab').last()
       
-      _.each(pheno, (v, k) ->
+      _.each pheno, (v, k) ->
         if v && m = k.match(/^mod_(\d)+$/)
           v = v.split(':', 2)
           $tabContent.find('[name="seg_'+m[1]+'[]"]').val(v[0]).change()
@@ -104,8 +107,7 @@ $(->
           $tabContent.find('.editable').html(v)
         else
           $tabContent.find('[name="'+k+'[]"]').val(v).change()
-      )
-    )
+      
   
   $('html').on 'click', '.add-strain-tab', addStrainTab
   $('form').on 'click', '.delete-strain-tab', deleteStrainTab
