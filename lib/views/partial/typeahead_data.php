@@ -11,5 +11,6 @@ $CLINICAL_TAGS = array(
   'alveolitis','inflammation','ruffled fur','hunched posture','severe alveolitis','minimal alveolitis',
   'severe bronchitis','minimal bronchitis','nonpathogenic','bronchiolitis','severe bronchiolitis',
   'minimal bronchiolitis','necrosis of respiratory epithelium','severe necrosis of respiratory epithelium',
-  'severe inflammation','minimal inflammation'
+  'severe inflammation','minimal inflammation','fever','mild fever','severe fever','minimal fever','moderate fever',
+  'moderate weight loss'
 );
