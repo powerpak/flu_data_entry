@@ -127,14 +127,14 @@ $(->
   
   $('form').on 'change select', '.seg-select', (e) ->
     val = $(this).val()
-    $followingRows = $(this).closest('.controls').nextAll('.controls')
-    allVals = _.uniq _.compact _.map $(this).closest('.control-group').find('.seg-select'), (el) -> $(el).val()
+    $allSelects = $(this).closest('.control-group').find('.seg-select')
+    $toHide = $allSelects.filter(-> $(this).val() != '').last().closest('.controls').nextAll('.controls')
+    allVals = _.uniq _.compact _.map $allSelects, (el) -> $(el).val()
     tabId = $(this).closest('.strain-tab').attr('id')
+    console.log(allVals)
     $('#strain-tabs a[href=#'+tabId+'] .mods').text(if allVals.length then '~' + allVals.join(',') else '')
-    if val != ''
-      $followingRows.removeClass('hidden').find('.seg-select').eq(0).change()
-    else
-      $followingRows.addClass('hidden').find('.seg-select').eq(0).change()
+    $(this).closest('.controls').siblings('.controls').addBack().not($toHide).removeClass('hidden')
+    $toHide.addClass('hidden')
   
   $('form').on('submit', submitPhenotypes)
   

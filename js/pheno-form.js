@@ -157,19 +157,20 @@
       return $('#strain-tabs a[href=#' + tabId + '] .animal').text(animal);
     });
     $('form').on('change select', '.seg-select', function(e) {
-      var $followingRows, allVals, tabId, val;
+      var $allSelects, $toHide, allVals, tabId, val;
       val = $(this).val();
-      $followingRows = $(this).closest('.controls').nextAll('.controls');
-      allVals = _.uniq(_.compact(_.map($(this).closest('.control-group').find('.seg-select'), function(el) {
+      $allSelects = $(this).closest('.control-group').find('.seg-select');
+      $toHide = $allSelects.filter(function() {
+        return $(this).val() !== '';
+      }).last().closest('.controls').nextAll('.controls');
+      allVals = _.uniq(_.compact(_.map($allSelects, function(el) {
         return $(el).val();
       })));
       tabId = $(this).closest('.strain-tab').attr('id');
+      console.log(allVals);
       $('#strain-tabs a[href=#' + tabId + '] .mods').text(allVals.length ? '~' + allVals.join(',') : '');
-      if (val !== '') {
-        return $followingRows.removeClass('hidden').find('.seg-select').eq(0).change();
-      } else {
-        return $followingRows.addClass('hidden').find('.seg-select').eq(0).change();
-      }
+      $(this).closest('.controls').siblings('.controls').addBack().not($toHide).removeClass('hidden');
+      return $toHide.addClass('hidden');
     });
     $('form').on('submit', submitPhenotypes);
     if (!$('.strain-tab:not(.strain-tab-template)').length) {
