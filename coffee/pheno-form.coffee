@@ -16,7 +16,7 @@ $(->
   
   addStrainTab = (e) ->
     e.preventDefault() if e
-    dupe = e.data && e.data.dupe
+    dupe = e? && e.data? && e.data.dupe
     $template = if dupe then $('.strain-tab.active') else $('.strain-tab.strain-tab-template')
     $tabTemplate = if dupe then $('#strain-tabs li.active') else $('#strain-tabs .strain-tab-template')
     newTabNum = 1 + parseInt($template.data('new-tab-num') || 0, 10)
@@ -35,6 +35,10 @@ $(->
     
     $template.data('new-tab-num', newTabNum)
     
+    # For some reason these are not copied with the .clone()
+    $newContent.find('.seg-select').each ->
+      $(this).val($template.find('[name="'+$(this).attr('name')+'"]').val()).change()
+    $('#strain-tabs').sortable('refresh');
     $('#strain-tabs .add-strain-tab').addClass('hidden')
     newTabCount = $('.strain-tab:not(.strain-tab-template)').length
     $newContent.find('.tm-input').tagsManager({tagCloseIcon: '×'})
@@ -54,6 +58,17 @@ $(->
     if $allTabs.length > 1
       $('#strain-tabs li:not(.strain-tab-template) a').eq(tabIndex - 1).tab('show')
     $('#strain-tabs .add-strain-tab').toggleClass('hidden', $allTabs.length != 1)
+  
+  reorderStrainTabs = (e, ui) ->
+    $allTabs = $('#strain-tabs li:not(.strain-tab-template) a')
+    $lastTabContent = null
+    $allTabs.each (i) ->
+      $tabContent = $($(this).attr('href'))
+      if i > 0
+        $tabContent.insertAfter($lastTabContent)
+      else
+        $('#strain-tab-content').prepend($tabContent)
+      $lastTabContent = $tabContent
   
   submitPhenotypes = (e) ->
     $('.strain-tab:not(.strain-tab-template) .editable').each ->
@@ -94,24 +109,30 @@ $(->
   $('html').on 'click', '.add-strain-tab', addStrainTab
   $('form').on 'click', '.delete-strain-tab', deleteStrainTab
   $('html').on 'click', '.dupe-strain-tab', {dupe: true}, addStrainTab
+  $('#strain-tabs').sortable({
+    stop: reorderStrainTabs
+  }).disableSelection();
   
   $('form').on 'keyup change', '[name="strain_name[]"]', (e) ->
-    tab_id = $(this).closest('.strain-tab').attr('id')
-    strain_id = $(this).val()
-    $('#strain-tabs a[href=#'+tab_id+'] .strain-id').text(strain_id)
+    tabId = $(this).closest('.strain-tab').attr('id')
+    strainId = $(this).val()
+    $('#strain-tabs a[href=#'+tabId+'] .strain-id').text(strainId)
 
   $('form').on 'keyup change', '[name="animal[]"]', (e)->
-    tab_id = $(this).closest('.strain-tab').attr('id')
+    tabId = $(this).closest('.strain-tab').attr('id')
     animal = $(this).val()
-    $('#strain-tabs a[href=#'+tab_id+'] .animal').text(animal)
+    $('#strain-tabs a[href=#'+tabId+'] .animal').text(animal)
   
   $('form').on 'change select', '.seg-select', (e) ->
     val = $(this).val()
-    $following_rows = $(this).closest('.controls').nextAll('.controls')
+    $followingRows = $(this).closest('.controls').nextAll('.controls')
+    allVals = _.uniq _.compact _.map $(this).closest('.control-group').find('.seg-select'), (el) -> $(el).val()
+    tabId = $(this).closest('.strain-tab').attr('id')
+    $('#strain-tabs a[href=#'+tabId+'] .mods').text(if allVals.length then '~' + allVals.join(',') else '')
     if val != ''
-      $following_rows.removeClass('hidden').find('.seg-select').eq(0).change()
+      $followingRows.removeClass('hidden').find('.seg-select').eq(0).change()
     else
-      $following_rows.addClass('hidden').find('.seg-select').eq(0).change()
+      $followingRows.addClass('hidden').find('.seg-select').eq(0).change()
   
   $('form').on('submit', submitPhenotypes)
   

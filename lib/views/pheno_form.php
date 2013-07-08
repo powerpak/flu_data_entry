@@ -22,7 +22,7 @@
       <ul class="nav nav-tabs" id="strain-tabs">
         <li class="strain-tab-template">
           <a href="#" data-toggle="tab">
-            <span class="strain-id">Unknown Strain</span> <strong class="cross">&rarr;</strong> <strong class="animal">mouse</strong>
+            <span class="strain-id">Unknown Strain</span><strong class="mods"></strong> <strong class="cross">&rarr;</strong> <strong class="animal">mouse</strong>
           </a>
         </li>
         <button class="btn add-strain-tab">Add another experiment</button>
