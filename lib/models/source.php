@@ -10,7 +10,6 @@ class Source extends Model {
     Model::start_transaction();
     $id = isset($post['id']) && $post['id'] !== '' ? $post['id'] : NULL;
     if ($id === NULL) {
-      print_r($post);
       $sources = Model::factory('Source')->where('first_author', $post['first_author']);
       if ($post['pub_year']) { $sources->where('pub_year', $post['pub_year']); }
       else { $sources->where('pub_year', NULL); }
