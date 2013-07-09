@@ -102,7 +102,12 @@
           <input type="text" name="ld50[]" class="span1" placeholder="1.0"/>
           ×10^
           <input type="text" name="ld50_exp[]" class="span1" placeholder="5"/>
-          PFU
+          <select name="ld50_units[]" class="span1">
+            <option selected>PFU</option>
+            <option>EID50</option>
+            <option>TCID50</option>
+          </select>
+          
           <label for="eid50[]">
             <span class="little">EID50</span>
           </label>

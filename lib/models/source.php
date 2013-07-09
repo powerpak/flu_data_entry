@@ -29,7 +29,7 @@ class Source extends Model {
       $phenotype->source_id = $source->id;
       $phenotype->strain_name = $strain_name;
       $FIELDS = array('animal', 'animal_subtype',
-        'ld50', 'ld50_operator', 'eid50', 'eid50_operator',
+        'ld50', 'ld50_operator', 'ld50_units', 'eid50', 'eid50_operator',
         'trans_contact', 'trans_contact_qual',
         'trans_aerosol', 'trans_aerosol_qual',
         'pathogenicity_qual', 'evidence');
