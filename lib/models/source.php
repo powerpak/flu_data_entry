@@ -35,6 +35,7 @@ class Source extends Model {
         'pathogenicity_qual', 'evidence');
       $FLOATS_WITH_EXP = array('ld50', 'eid50');
       $FLOATS = array('trans_contact', 'trans_aerosol');
+      $BACKREFS_ALLOWED = array('evidence');
       foreach($FIELDS as $field) {
         if (is_array($post[$field])) {
           $val = $post[$field][$i];
@@ -47,6 +48,9 @@ class Source extends Model {
           }
           if (in_array($field, $FLOATS)) {
             if ($val === '') { continue; }
+          }
+          if (in_array($field, $BACKREFS_ALLOWED)) {
+            if (substr($val, 0, 3) == "%%%") { $val = $post[$field][intval(substr($val, 3))]; }
           }
           $phenotype->$field = $val;
         }

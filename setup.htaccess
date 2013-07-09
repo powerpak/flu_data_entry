@@ -1,4 +1,4 @@
-# COPY TO setup.htaccess before using
+# COPY TO .htaccess before using
 
 <FilesMatch ".(php|htm|html|css|js)$">
 AddDefaultCharset UTF-8

@@ -77,8 +77,15 @@ $(->
       $lastTabContent = $tabContent
   
   submitPhenotypes = (e) ->
-    $('.strain-tab:not(.strain-tab-template) .editable').each ->
-      $(this).next('input').val($(this).html())
+    htmls = {}
+    $('.strain-tab:not(.strain-tab-template) .editable').each (i) ->
+      # Create backreferences so we don't submit redundant evidence fields (they can be megabytes large)
+      html = $(this).html()
+      if htmls[html]?
+        $(this).next('input').val('%%%' + htmls[html])
+      else
+        htmls[html] = i
+        $(this).next('input').val(html)
       
   loadPhenotypes = (source) ->
     _.each source, (v, k) ->

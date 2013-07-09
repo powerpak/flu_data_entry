@@ -92,8 +92,17 @@
       });
     };
     submitPhenotypes = function(e) {
-      return $('.strain-tab:not(.strain-tab-template) .editable').each(function() {
-        return $(this).next('input').val($(this).html());
+      var htmls;
+      htmls = {};
+      return $('.strain-tab:not(.strain-tab-template) .editable').each(function(i) {
+        var html;
+        html = $(this).html();
+        if (htmls[html] != null) {
+          return $(this).next('input').val('%%%' + htmls[html]);
+        } else {
+          htmls[html] = i;
+          return $(this).next('input').val(html);
+        }
       });
     };
     loadPhenotypes = function(source) {
