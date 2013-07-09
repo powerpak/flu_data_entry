@@ -126,13 +126,11 @@ $(->
     $('#strain-tabs a[href=#'+tabId+'] .animal').text(animal)
   
   $('form').on 'change select', '.seg-select', (e) ->
-    console.log this
     val = $(this).val()
     $allSelects = $(this).closest('.control-group').find('.seg-select')
     $toHide = $allSelects.filter(-> $(this).val() != '').last().closest('.controls').nextAll('.controls').slice(1)
     allVals = _.uniq _.compact _.map $allSelects, (el) -> $(el).val()
     tabId = $(this).closest('.strain-tab').attr('id')
-    console.log(allVals)
     $('#strain-tabs a[href=#'+tabId+'] .mods').text(if allVals.length then '~' + allVals.join(',') else '')
     if $toHide.length || allVals.length
       $allSelects.closest('.controls').not($toHide).removeClass('hidden')
@@ -144,6 +142,17 @@ $(->
   
   if !$('.strain-tab:not(.strain-tab-template)').length
     $('.add-strain-tab').eq(0).click()
+
+  $(document).on "keydown keypress", (e) ->
+    rx = /INPUT|SELECT|TEXTAREA/i
+    $targ = $(e.target)
+    # e.which of 8 == backspace, and we don't want to do this when within contenteditables
+    if e.which == 8 && !$targ.closest('[contenteditable=true]').length
+      if (
+        !rx.test(e.target.tagName) or e.target.disabled or e.target.readOnly or
+        $targ.is(':checkbox,:radio:,:submit')
+      )
+        e.preventDefault()
   
   if SOURCE then loadPhenotypes(SOURCE)
   

@@ -158,7 +158,6 @@
     });
     $('form').on('change select', '.seg-select', function(e) {
       var $allSelects, $toHide, allVals, tabId, val;
-      console.log(this);
       val = $(this).val();
       $allSelects = $(this).closest('.control-group').find('.seg-select');
       $toHide = $allSelects.filter(function() {
@@ -168,7 +167,6 @@
         return $(el).val();
       })));
       tabId = $(this).closest('.strain-tab').attr('id');
-      console.log(allVals);
       $('#strain-tabs a[href=#' + tabId + '] .mods').text(allVals.length ? '~' + allVals.join(',') : '');
       if ($toHide.length || allVals.length) {
         $allSelects.closest('.controls').not($toHide).removeClass('hidden');
@@ -181,6 +179,16 @@
     if (!$('.strain-tab:not(.strain-tab-template)').length) {
       $('.add-strain-tab').eq(0).click();
     }
+    $(document).on("keydown keypress", function(e) {
+      var $targ, rx;
+      rx = /INPUT|SELECT|TEXTAREA/i;
+      $targ = $(e.target);
+      if (e.which === 8 && !$targ.closest('[contenteditable=true]').length) {
+        if (!rx.test(e.target.tagName) || e.target.disabled || e.target.readOnly || $targ.is(':checkbox,:radio:,:submit')) {
+          return e.preventDefault();
+        }
+      }
+    });
     if (SOURCE) {
       return loadPhenotypes(SOURCE);
     }
