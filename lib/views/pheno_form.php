@@ -106,6 +106,7 @@
             <option selected>PFU</option>
             <option>EID50</option>
             <option>TCID50</option>
+            <option>CCID50</option>
           </select>
           
           <label for="eid50[]">
