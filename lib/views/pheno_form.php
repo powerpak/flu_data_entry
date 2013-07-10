@@ -71,6 +71,7 @@
           <select name="seg_<?= $i ?>[]" class="seg-select span2">
             <option></option>
             <option>PB1</option>
+            <option>PB1-F2</option>
             <option>PB2</option>
             <option>PA</option>
             <option>HA</option>
@@ -185,10 +186,10 @@
   </div>
   
   <?php if (isset($source)): ?>
-    <script>
-      var SOURCE = <?= json_encode($source->as_array()); ?>;
-      SOURCE.phenotypes = <?= json_encode($phenotypes); ?>;
-    </script>
+  <script>
+    var SOURCE = <?= json_encode($source->as_array()); ?>;
+    SOURCE.phenotypes = <?= json_encode($phenotypes); ?>;
+  </script>
   <?php endif; ?>
   
   <?php include 'partial/scripts.php' ?>
