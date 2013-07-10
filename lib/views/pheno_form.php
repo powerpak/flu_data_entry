@@ -175,7 +175,7 @@
       <div class="control-group">
         <label class="control-label" for="evidence[]">Evidence</label>
         <div class="controls form-inline">
-          <div class="editable span6 well" contenteditable="true">
+          <div class="editable span8 well" contenteditable="true">
           </div>
           <input type="hidden" name="evidence[]"/>
         </div>
