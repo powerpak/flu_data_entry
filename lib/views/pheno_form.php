@@ -83,7 +83,7 @@
             <option>NS2</option>
           </select>
           <input type="text" class="span4" name="mod_<?= $i ?>[]"
-            placeholder="<?= $i == 1 ? 'e.g. K144V or A/Norway/3568/2009' : '' ?>"/>
+            placeholder="<?= $i == 1 ? 'e.g. K144V or A/Norway/3568/2009 or KO' : '' ?>"/>
         </div>
         <?php endfor; ?>
       </div>
