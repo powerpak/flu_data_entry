@@ -84,8 +84,9 @@
             <option>NS1</option>
             <option>NS2</option>
           </select>
-          <input type="text" class="span4" name="mod_<?= $i ?>[]"
-            placeholder="<?= $i == 1 ? 'e.g. K144V or A/Norway/3568/2009 or KO' : '' ?>"/>
+          <input type="text" class="span6" name="mod_<?= $i ?>[]"
+            placeholder="<?= $i == 1 ? 'e.g. K144V, A/Norway/3568/2009, KO, or p.123_124insWKV' : '' ?>"/>
+          <a href="http://www.hgvs.org/mutnomen/recs.html#general" target="_blank">?</a>
         </div>
         <?php endfor; ?>
       </div>
