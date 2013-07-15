@@ -199,8 +199,9 @@
       }
     });
     if (SOURCE) {
-      return loadPhenotypes(SOURCE);
+      loadPhenotypes(SOURCE);
     }
+    return $('button[name=save]').attr('disabled', false);
   });
 
 }).call(this);
