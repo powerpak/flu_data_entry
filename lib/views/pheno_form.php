@@ -48,6 +48,7 @@
               <option>mouse</option>
               <option>ferret</option>
               <option>chicken</option>
+              <option>duck</option>
               <option>pig</option>
             </select>
           </label>
