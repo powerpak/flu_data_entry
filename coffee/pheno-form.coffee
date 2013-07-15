@@ -162,5 +162,6 @@ $(->
         e.preventDefault()
   
   if SOURCE then loadPhenotypes(SOURCE)
+  $('button[name=save]').attr('disabled', false)
   
 )

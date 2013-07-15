@@ -17,7 +17,7 @@
           <input type="checkbox" name="done"/>
           <strong>This record is complete</strong>
         </label>
-        <button type="submit" class="btn btn-primary btn-large pull-right" name="save">Save</button>
+        <button type="submit" class="btn btn-primary btn-large pull-right" name="save" disabled>Save</button>
       </div>
       
       <ul class="nav nav-tabs" id="strain-tabs">
