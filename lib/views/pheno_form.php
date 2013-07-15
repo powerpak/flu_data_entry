@@ -50,6 +50,7 @@
               <option>chicken</option>
               <option>duck</option>
               <option>pig</option>
+              <option>guinea pig</option>
             </select>
           </label>
           <label>
