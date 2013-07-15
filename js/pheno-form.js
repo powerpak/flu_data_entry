@@ -107,7 +107,7 @@
     };
     loadPhenotypes = function(source) {
       if (source.title != null) {
-        window.title = source.title;
+        window.document.title = source.title;
       }
       _.each(source, function(v, k) {
         return $('form input[name=' + k + ']').val(v).attr('readonly', true);

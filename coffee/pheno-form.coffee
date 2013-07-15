@@ -89,7 +89,7 @@ $(->
       
   loadPhenotypes = (source) ->
     if source.title?
-      window.title = source.title
+      window.document.title = source.title
     _.each source, (v, k) ->
       $('form input[name='+k+']').val(v).attr('readonly', true)
     if source.reviewed == '2'
